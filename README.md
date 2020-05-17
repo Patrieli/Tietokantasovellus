@@ -1,1 +1,2 @@
-# Tietokantasovellus
+# ToDoPlanner
+## Helsingin yliopiston aineopintojen harjoitustyö
