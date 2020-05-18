@@ -20,15 +20,27 @@
           <input type="submit" value="Start task"/>
         </form>
       </td>
+      <td>
+        <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}">
+          <input type="submit" value="Delete task"/>
+        </form>
+      </td>
       {% elif task.active == True %}
       <td>
         <form method="POST" action="{{ url_for('complete_task', task_id=task.id) }}">
           <input type="submit" value="Complete task"/>
         </form>
       </td>
+      <td>
+        <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}">
+          <input type="submit" value="Delete task"/>
+        </form>
+      </td>
       {% else %}
       <td>
-        
+        <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}">
+          <input type="submit" value="Delete task"/>
+        </form>
       </td>
       {% endif %}
     </tr>

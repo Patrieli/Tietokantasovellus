@@ -41,3 +41,13 @@ def create_tasks():
     db.session().commit()
 
     return redirect(url_for("tasks_index"))
+
+@app.route("/tasks/delete/<task_id>/", methods=["POST"])
+def delete_task(task_id):
+
+    t = Task.query.get(task_id)
+    
+    db.session().delete(t)
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
