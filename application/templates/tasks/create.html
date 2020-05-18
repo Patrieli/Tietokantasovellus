@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('create_tasks') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.description.label }}
+      </td>
+      <td colspan="2">
+        {{ form.description }}
+      </td>      
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Create new task" />
+      </td>
+    </tr>
+</form>
+{% endblock %}
