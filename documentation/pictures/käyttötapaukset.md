@@ -7,4 +7,4 @@
 - Taskeista voidaan luoda yhteisiä kokonaisuuksia eli projekteja.  
 - Taskeja voidaan kategorisoida tageilla. 
 - Taskeille voi asettaa aikarajoja.
-- Käyttäjä voi hallinnoida taskeja eri näkymien kautta
+- Käyttäjä voi hallinnoida taskeja eri näkymien kautta (tämä päivä / kandan).
