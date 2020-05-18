@@ -7,3 +7,6 @@ Sovellus toteutetaan osana Helsingin yliopiston tietojenkäsittelytieteen osasto
 
 ## Dokumentaatio
 [Tietokantakaavio](https://github.com/Patrieli/ToDoPlanner/blob/master/documentation/pictures/tietokantakaavio.jpg)
+
+## Sovellus herokussa
+[ToDoPlanner](https://todoplanneri.herokuapp.com/)
