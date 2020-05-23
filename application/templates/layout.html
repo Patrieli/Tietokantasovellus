@@ -6,11 +6,14 @@
   </head>
 
   <body>
-    {% block body %}
+    {% if current_user.is_authenticated %}
     <p>
-      Content.
+    Logged in as {{ current_user.username }}. <a href="{{ url_for('auth_logout') }}">Sign out</a>
     </p>
-    {% endblock %}
+    {% else %}
+    <a href="{{ url_for('auth_login') }}">Sign in</a>
+    <a href="{{ url_for('auth_sign_up') }}">Sign up</a>
+    {% endif %}
     <ul>
       <li>
         <a
@@ -25,5 +28,10 @@
         >
       </li>
     </ul>
+    {% block body %}
+    <p>
+      Content.
+    </p>
+    {% endblock %}
   </body>
 </html>
