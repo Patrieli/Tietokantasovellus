@@ -13,5 +13,5 @@ Sovellus toteutetaan osana Helsingin yliopiston tietojenkäsittelytieteen osasto
 [ToDoPlanner](https://todoplanneri.herokuapp.com/)  
 - **Testikäyttäjä sovellukseen:**  
 
-  **Username**: tester  
+  **Username**: testaaja  
   **Password**: salasana1
