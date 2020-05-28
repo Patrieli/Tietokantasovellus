@@ -34,13 +34,7 @@ def auth_sign_up():
         return render_template("auth/new.html", form = UserForm())
 
     form = UserForm(request.form)
-    # if form.validate():
-    #     new_user = User(form.name.data, form.username.data, form.password.data)
-    #     db.session.add(new_user)
-    #     db.session.commit()
-    #     return redirect(url_for("index"))
-    # else:
-    #     return render_template("auth/new.html", form = form, error = "Invalid username or password")
+   
     new_user = User(form.username.data, form.password.data)
     db.session.add(new_user)
     db.session.commit()
