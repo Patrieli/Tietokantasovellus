@@ -8,11 +8,11 @@ class Task(db.Model):
     active = db.Column(db.Boolean, nullable=False)
     archived = db.Column(db.Boolean, nullable=False)
     description = db.Column(db.String(144), nullable=False)
-    start_date = db.Column(db.DateTime, nullable=False)
-    end_date = db.Column(db.DateTime, nullable=False)
+    start_date = db.Column(db.DateTime, nullable=True)
+    end_date = db.Column(db.DateTime, nullable=True)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp(), 
     onupdate=db.func.current_timestamp())
-    deadline = db.Column(db.DateTime, nullable=False)
+    deadline = db.Column(db.DateTime, nullable=True)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
