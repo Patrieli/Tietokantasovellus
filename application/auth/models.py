@@ -1,11 +1,12 @@
 from application import db, bcrypt
+from application.models import Base
 
-class User(db.Model):
+from sqlalchemy.sql import text
+
+class User(Base):
 
     __tablename__ = "user"
   
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
