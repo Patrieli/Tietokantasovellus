@@ -27,6 +27,22 @@
       </td>      
     </tr>
     <tr>
+      <td>
+        {{ form.deadline.label }}
+      </td>
+      <td colspan="2">
+        {{ form.deadline(placeholder="Format dd/mm/yyyy") }}
+      </td>      
+    </tr>
+    <tr>
+      <td>
+        {{ form.labels.label }}
+      </td>
+      <td colspan="2">
+        {{ form.labels(placeholder="Separate labels with commas") }}
+      </td>
+    </tr>
+    <tr>
       <td colspan="2">
         <input type="submit" value="Create new task" />
       </td>
