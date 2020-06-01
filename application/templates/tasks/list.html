@@ -4,6 +4,8 @@
   {% for c in count %}
   {% if c.state == "To-do" %}
   <h2>To-Dos ({{ c.count }}) </h2>
+  {% else %}
+  <h2>To-Dos</h2>
   {% endif %}
   {% endfor %}
   <table>
@@ -41,6 +43,8 @@
   {% for c in count %}
   {% if c.state == "In progress" %}
   <h2>In Progress ({{ c.count }}) </h2>
+  {% else %}
+  <h2>In Progress</h2>
   {% endif %}
   {% endfor %}
   <table>
@@ -48,6 +52,7 @@
       <th>Task</th>
       <th>Description</th>
       <th>Deadline</th>
+      <th>Labels</th>
     </tr>
     {% for task in tasks %}
     {% if task.state == "In progress" %}
@@ -55,6 +60,10 @@
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
       <td>{{ task.deadline }}</td>
+      <td>{% for l in task.labels %}
+        {{ l.name }}
+        {% endfor %}
+      </td>
       <td>
         <form method="POST" action="{{ url_for('complete_task', task_id=task.id) }}">
           <input type="submit" value="Complete task"/>
@@ -73,6 +82,8 @@
   {% for c in count %}
   {% if c.state == "Completed" %}
   <h2>Completed ({{ c.count }}) </h2>
+  {% else %}
+  <h2>Completed</h2>
   {% endif %}
   {% endfor %}
   <table>
@@ -80,13 +91,18 @@
       <th>Task</th>
       <th>Description</th>
       <th>Finished</th>
+      <th>Labels</th>
     </tr>
-    {% for task in completed %}
+    {% for task in tasks %}
+    {% if task.state == "Completed" %}
     <tr>
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
       <td>{{ task.date_modified }}</td>
-      {% if task.state == "Completed" %}
+      <td>{% for l in task.labels %}
+        {{ l.name }}
+        {% endfor %}
+      </td>
       <td>
         <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}">
           <input type="submit" value="Delete task"/>
