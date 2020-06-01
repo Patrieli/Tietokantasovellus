@@ -1,14 +1,17 @@
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, login_manager
 
 from application import app, db
 from application.tasks.models import Task
 from application.tasks.forms import TaskForm
+from application.label.models import Label
 
 @app.route("/tasks", methods=["GET"])
 @login_required
 def tasks_index():
-    return render_template("tasks/list.html", tasks= Task.query.all())
+    return render_template("tasks/list.html", tasks = Task.query.filter_by(user_id = current_user.id),
+    completed=Task.list_all_completed_tasks(current_user.id),
+    count=Task.count_all_tasks(current_user.id))
 
 @app.route("/tasks/create/")
 @login_required
@@ -45,8 +48,12 @@ def create_tasks():
     if not form.validate():
         return render_template("tasks/create.html", form = form)
 
-    t = Task(form.name.data, form.description.data)
+    t = Task(form.name.data, form.description.data, form.deadline.data)
     t.user_id = current_user.id
+
+    labels = form.labels.data.split(",")
+    for l in labels:
+        t.labels.append(Label(l))
 
     db.session().add(t)
     db.session().commit()
@@ -63,3 +70,4 @@ def delete_task(task_id):
     db.session().commit()
   
     return redirect(url_for("tasks_index"))
+
