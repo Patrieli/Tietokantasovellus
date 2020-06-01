@@ -38,4 +38,5 @@ def auth_sign_up():
     new_user = User(form.username.data, form.password.data)
     db.session.add(new_user)
     db.session.commit()
+    login_user(new_user)
     return redirect(url_for("index"))
