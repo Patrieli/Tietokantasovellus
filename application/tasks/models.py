@@ -28,7 +28,7 @@ class Task(Base):
     @staticmethod
     def list_all_completed_tasks(user_id):
         stmt = text("SELECT id, name, description, date_modified, state FROM Task " 
-                    "WHERE (state = 'Completed' AND active = 0) AND (user_id = :user_id)").params(user_id = user_id)
+                    "WHERE (state = 'Completed') AND (user_id = :user_id)").params(user_id = user_id)
         res = db.engine.execute(stmt)
 
         response = []
@@ -46,17 +46,5 @@ class Task(Base):
         response = []
         for row in res:
             response.append({"state":row[0], "count":row[1]})
-
-        return response
-
-    @staticmethod
-    def list_all_archived_tasks():
-        stmt = text("SELECT name, state, deadline, COUNT(Task.id) AS count FROM Task" 
-                    "WHERE (archived = 1) AND (user_id = :user_id)").params(user_id = user_id)
-        res = db.engine.execute(stmt)
-
-        response = []
-        for row in res:
-            response.append({"name":row[0], "state":row[1], "deadline":row[2], "count":row[3]})
 
         return response
