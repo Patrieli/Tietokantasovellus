@@ -8,7 +8,7 @@ class User(Base):
     __tablename__ = "user"
   
     username = db.Column(db.String(30), nullable=False)
-    password = db.Column(db.String(30), nullable=False)
+    password = db.Column(db.String(144), nullable=False)
 
     tasks = db.relationship("Task", backref='user', lazy=True)
     projects = db.relationship("Project", backref='user', lazy=True)
