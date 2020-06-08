@@ -20,7 +20,8 @@ pip install requirements.txt
 
 ### Sovelluksen käynnistäminen ToDoPlanner -kansiosta  
 ``
-python run.py
-``
-Ensimmäisen käynnistyksen aikana tapahtuu tietokannan luonti.
+python run.py  
+``  
+
+Ensimmäisen käynnistyksen aikana tapahtuu tietokannan luonti.  
 Sovellus on nyt toiminassa sivulla [http://localhost:5000/](http://localhost:5000/).
