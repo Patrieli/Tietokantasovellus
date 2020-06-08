@@ -4,7 +4,7 @@ from wtforms import StringField, DateField, validators
 
 class TaskForm(FlaskForm):
     name = StringField("Task name", [validators.Length(min=3)])
-    description = StringField("Description")
+    description = StringField("Description", [validators.DataRequired()])
     deadline = DateField('Deadline', format='%d/%m/%Y')
     labels = StringField("Labels")
  
