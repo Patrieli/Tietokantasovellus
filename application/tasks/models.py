@@ -4,8 +4,8 @@ from application.models import Base
 from sqlalchemy.sql import text
 
 class Task(Base):
-    name = db.Column(db.String(144), nullable=False)
-    state = db.Column(db.String(144), nullable=False)
+    name = db.Column(db.String(30), nullable=False)
+    state = db.Column(db.String(20), nullable=False)
     active = db.Column(db.Boolean, nullable=False)
     archived = db.Column(db.Boolean, nullable=False)
     description = db.Column(db.String(144), nullable=False)
@@ -14,6 +14,7 @@ class Task(Base):
     deadline = db.Column(db.DateTime, nullable=True)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=True)
     
     labels = db.relationship('Label', secondary='tasklabels', backref=db.backref('tasks'), lazy=True)
 
