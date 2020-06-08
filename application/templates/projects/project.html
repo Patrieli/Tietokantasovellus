@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <table>
+        <tr>
+          <th>Project</th>
+        </tr>
+        <tr>
+          <td>
+            {{ project.name }}
+          </td>
+        </tr>
+    </table>
+    <br>
+    <div>
+        <button type="button" class="btn btn-light" onclick=window.location.href='{{ url_for('projects_index') }}';>Return</button>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <table>
+        <tr>
+          <th>Project</th>
+        </tr>
+        {% for project in projects %}
+        <tr>
+          <td>
+              <a href="{{ url_for('open_project', project_id=project.id) }}">
+                {{ project.name }}
+              </a>
+              
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+{% endblock %}
