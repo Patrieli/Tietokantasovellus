@@ -28,13 +28,16 @@ def auth_logout():
     logout_user()
     return redirect(url_for("index"))
 
-@app.route("/auth/signup", methods = ["GET", "POST"])    
-def auth_sign_up():
+@app.route("/auth/signup/", methods = ["GET", "POST"])
+def signup_form():
     if request.method == "GET":
         return render_template("auth/new.html", form = UserForm())
 
     form = UserForm(request.form)
-   
+
+    if not form.validate():
+        return render_template("auth/new.html", form = form)
+
     new_user = User(form.username.data, form.password.data)
     db.session.add(new_user)
     db.session.commit()
