@@ -16,7 +16,7 @@
     <tr>
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
-      <td>{{ task.deadline }}</td>
+      <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
       <td>{% for l in task.labels %}
         {{ l.name }}
         {% endfor %}
@@ -51,7 +51,7 @@
     <tr>
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
-      <td>{{ task.deadline }}</td>
+      <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
       <td>{% for l in task.labels %}
         {{ l.name }}
         {% endfor %}
@@ -77,18 +77,26 @@
       <th scope="col">Task</th>
       <th scope="col">Description</th>
       <th scope="col">Deadline</th>
+      <th scope="col">Completed</th>
       <th scope="col">Labels</th>
+      <th scope="col"> </th>
       <th scope="col"> </th>
     </tr>
     {% for task in tasks %}
-    {% if task.state == "Completed" %}
+    {% if task.state == "Completed" and task.archived == False %}
     <tr>
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
-      <td>{{ task.date_modified }}</td>
+      <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
+      <td>{{ task.date_modified.strftime('%Y-%m-%d') }}</td>
       <td>{% for l in task.labels %}
         {{ l.name }}
         {% endfor %}
+      </td>
+      <td>
+        <form method="POST" action="{{ url_for('archive_task', task_id=task.id) }}">
+          <input type="submit" value="Archive task"/>
+        </form>
       </td>
       <td>
         <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}">
