@@ -71,3 +71,18 @@ def delete_task(task_id):
   
     return redirect(url_for("tasks_index"))
 
+@app.route("/tasks/archive/<task_id>/", methods=["POST"])
+@login_required
+def archive_task(task_id):
+
+    t = Task.query.get(task_id)
+    t.archived = True
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
+
+@app.route("/tasks/archived", methods=["GET"])
+@login_required
+def tasks_archived():
+    return render_template("tasks/archived.html", tasks = Task.query.filter_by(user_id = current_user.id).filter(Task.archived == True),
+    count=Task.count_all_tasks(current_user.id))
