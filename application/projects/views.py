@@ -36,7 +36,7 @@ def create_project():
     count = Task.query.filter_by(user_id = current_user.id).filter(Task.project_id == None).filter(Task.archived == False).count(),
     project_id = p.id, project_name = p.name)
 
-@app.route("/projects/<project_id>", methods=["GET"])
+@app.route("/projects/<int:project_id>", methods=["GET"])
 @login_required
 def open_project(project_id):
     return render_template("projects/project.html", project = Project.query.get(project_id),
