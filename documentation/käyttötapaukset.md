@@ -8,7 +8,7 @@
 - Käyttäjä voi lisätä itselleen taskeja.  
 - Käyttäjä voi päivittää olemassa olevia taskeja.  
 - Käyttäjä voi poistaa olemassa olevia taskeja. 
-- Käyttäjä vois arkistoida valmiita taskeja.
+- Käyttäjä voi arkistoida valmiita taskeja.
 - Taskeja voidaan kategorisoida tageilla.
 - Taskeille voi asettaa aikarajoja.
 
