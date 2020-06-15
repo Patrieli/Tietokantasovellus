@@ -16,7 +16,15 @@
     <tr>
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
-      <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
+      {% if task.deadline < current_date %}
+      <td class="bg-danger">
+          {{ task.deadline.strftime('%Y-%m-%d') }}
+      </td>
+      {% else %}
+      <td>
+        {{ task.deadline.strftime('%Y-%m-%d') }}
+      </td>
+      {% endif %}
       <td>{% for l in task.labels %}
         {{ l.name }}{{ "," if not loop.last }}
         {% endfor %}
@@ -60,7 +68,6 @@
         {{ task.deadline.strftime('%Y-%m-%d') }}
       </td>
       {% endif %}
-      
       <td>{% for l in task.labels %}
         {{ l.name }}{{ "," if not loop.last }}
         {% endfor %}

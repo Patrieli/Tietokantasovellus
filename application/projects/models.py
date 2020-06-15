@@ -18,11 +18,11 @@ class Project(Base):
     @staticmethod
     def project_tasks(user_id, project_id):
 
-        stmt = text("SELECT  task.name, task.deadline, task.state, COUNT(task.id) AS count FROM project "
-                    "INNER JOIN task ON task.project_id = project.id "
-                    "INNER JOIN user ON project.user_id = user.id " 
-                    "WHERE (project.user_id = :user_id) AND (task.project_id = :project_id) "
-                    "GROUP BY task.name, task.deadline, task.state" ).params(user_id=user_id, project_id=project_id)
+        stmt = text("SELECT task.name, task.deadline, task.state, COUNT(task.id) AS count FROM project"
+                    " INNER JOIN task ON (task.project_id = project.id)"
+                    " INNER JOIN user ON (project.user_id = user.id)" 
+                    " WHERE (project.user_id = :user_id) AND (task.project_id = :project_id) "
+                    " GROUP BY task.name, task.deadline, task.state" ).params(user_id=user_id, project_id=project_id)
         
         res = db.engine.execute(stmt)
 
