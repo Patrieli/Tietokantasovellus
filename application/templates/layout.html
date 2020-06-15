@@ -29,6 +29,14 @@
               <a class="dropdown-item" href="{{ url_for('projects_index') }}">List all Projects</a>
             </div>
           </li>
+          {% if current_user.role == "ADMIN" %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ url_for('users_index') }}" role="button" aria-haspopup="true" aria-expanded="false">Users</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{ url_for('users_index') }}">List all users</a>
+            </div>
+          </li>
+          {% endif %}
         </ul>
         <div class="form-inline mt-2 mt-md-0">
            {% if current_user.is_authenticated %}
