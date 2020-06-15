@@ -1,18 +1,27 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <table>
-        <tr>
-          <th>Project</th>
-        </tr>
-        <tr>
-          <td>
-            {{ project.name }}
-          </td>
-        </tr>
-    </table>
-    <br>
-    <div>
-        <button type="button" class="btn btn-light" onclick=window.location.href='{{ url_for('projects_index') }}';>Return</button>
+<form>
+  <div class="form-group row">
+    <label for="projectName" class="col-sm-2 col-form-label">Project</label>
+    <div class="col-sm-10">
+      <label type="text" readonly class="form-control-plaintext" id="projectName">{{ project.name }}</label>
     </div>
+  </div>
+  <div class="form-group row">
+    <label for="addTasks" class="col-sm-2 col-form-label">Tasks</label>
+    <div class="col-sm-10">
+      <ul class="list-group list-group-flush">
+        {% for task in tasks %}
+        <li class="list-group-item">{{ task.name }} {{ task.state }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div>
+    <button type="button" class="btn btn-secondary" onclick=window.location.href='{{ url_for('projects_index') }}';>Return</button>
+    <button type="button" class="btn btn-primary" onclick=window.location.href='{{ url_for('projects_index') }}';>Save</button>
+  </div>
+</form>
+
 {% endblock %}

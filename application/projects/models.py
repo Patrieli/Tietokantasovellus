@@ -14,3 +14,20 @@ class Project(Base):
     def __init__(self, name):
         self.name = name
         self.active = False
+
+    @staticmethod
+    def project_tasks(user_id, project_id):
+
+        stmt = text("SELECT COUNT(task.id) AS count, task.name, task.deadline, task.state FROM project "
+                    "INNER JOIN task ON task.project_id = project.id "
+                    "INNER JOIN user ON project.user_id = user.id " 
+                    "WHERE (project.user_id = :user_id) AND (task.project_id = :project_id) "
+                    "GROUP BY task.name, task.deadline, task.state" ).params(user_id=user_id, project_id=project_id)
+        
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"count":row[0], "name":row[1], "deadline":row[2], "state":row[3]})
+
+        return response
