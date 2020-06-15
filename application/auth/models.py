@@ -14,10 +14,10 @@ class User(Base):
     tasks = db.relationship("Task", backref='user', lazy=True)
     projects = db.relationship("Project", backref='user', lazy=True)
 
-    def __init__(self, username, password, role):
+    def __init__(self, username, password):
         self.username = username
         self.password = bcrypt.generate_password_hash(password).decode('UTF-8')
-        self.role = role
+        self.role = "USER"
   
     def get_id(self):
         return self.id

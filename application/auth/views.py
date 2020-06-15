@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 
-from application import app, db, bcrypt
+from application import app, db, bcrypt, login_required
 from application.auth.models import User
 from application.auth.forms import LoginForm, UserForm
 
@@ -38,8 +38,13 @@ def signup_form():
     if not form.validate():
         return render_template("auth/new.html", form = form)
 
-    new_user = User(form.username.data, form.password.data, form.role.data)
+    new_user = User(form.username.data, form.password.data)
     db.session.add(new_user)
     db.session.commit()
     login_user(new_user)
     return redirect(url_for("index"))
+
+@app.route("/users", methods=["GET"])
+@login_required(role="ADMIN")
+def users_index():
+    return render_template("auth/list.html", users = User.query.all())
