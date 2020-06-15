@@ -17,4 +17,9 @@ Sovellus toteutetaan osana Helsingin yliopiston tietojenkäsittelytieteen osasto
 - **Testikäyttäjä sovellukseen:**  
 
   **Username**: testaaja  
+  **Password**: salasana1  
+  
+- **Admin käyttäjä:**  
+
+  **Username**: Admin
   **Password**: salasana1
