@@ -21,5 +21,5 @@ Sovellus toteutetaan osana Helsingin yliopiston tietojenkäsittelytieteen osasto
   
 - **Admin käyttäjä:**  
 
-  **Username**: Admin
+  **Username**: Admin  
   **Password**: salasana1
