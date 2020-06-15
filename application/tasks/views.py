@@ -1,5 +1,6 @@
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required, current_user, login_manager
+from datetime import datetime
 
 from application import app, db
 from application.tasks.models import Task
@@ -10,7 +11,7 @@ from application.label.models import Label
 @login_required
 def tasks_index():
     return render_template("tasks/list.html", tasks = Task.query.filter_by(user_id = current_user.id),
-    completed=Task.list_all_completed_tasks(current_user.id),
+    current_date=datetime.now(),
     count=Task.count_all_tasks(current_user.id))
 
 @app.route("/tasks/create/")
@@ -53,7 +54,7 @@ def create_tasks():
 
     labels = form.labels.data.split(",")
     for l in labels:
-        t.labels.append(Label(l))
+        t.labels.append(Label(l.strip()))
 
     db.session().add(t)
     db.session().commit()
