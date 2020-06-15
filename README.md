@@ -13,13 +13,14 @@ Sovellus toteutetaan osana Helsingin yliopiston tietojenkäsittelytieteen osasto
 
 
 ## Sovellus herokussa
-[ToDoPlanner](https://todoplanneri.herokuapp.com/)  
-- **Testikäyttäjä sovellukseen:**  
+[ToDoPlanner](https://todoplanneri.herokuapp.com/)
 
+- **Käyttäjätunnukset sovellukseen:**  
+
+	 *Admin-oikeuksilla*:  
+  **Username**: admin  
+  **Password**: salasana1  
+
+	*Peruskäyttäjä:*  
   **Username**: testaaja  
   **Password**: salasana1  
-  
-- **Admin käyttäjä:**  
-
-  **Username**: admin  
-  **Password**: salasana1
