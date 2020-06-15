@@ -39,6 +39,23 @@
       </td>
     </tr>
     <tr>
+      <td>
+	{{ form.role.label }}
+      </td>
+      <td>
+	{{ form.role }}
+      </td>
+      <td>
+       <ul>
+       {% if form.role.errors %}
+       {% for error in form.role.errors %}
+        <li>{{ error }}</li>
+       {% endfor %}
+       {% endif %}
+      </ul>
+      </td>
+    </tr>
+    <tr>
       <td colspan="2">
 	<input type="submit" value="Sign up"/>
       </td>
