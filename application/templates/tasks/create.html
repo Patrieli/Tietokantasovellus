@@ -43,7 +43,7 @@
       <td>
         <ul>
           {% for error in form.deadline.errors %}
-          <li>{{ error }}</li>
+          <li>{{ error + " (dd/mm/yyyy)"}}</li>
           {% endfor %}
         </ul>
       </td>       

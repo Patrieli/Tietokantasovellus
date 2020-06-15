@@ -18,7 +18,7 @@
       <td>{{ task.description }}</td>
       <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
       <td>{% for l in task.labels %}
-        {{ l.name }}
+        {{ l.name }}{{ "," if not loop.last }}
         {% endfor %}
       </td>
       <td>
@@ -51,9 +51,18 @@
     <tr>
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
-      <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
+      {% if task.deadline < current_date %}
+      <td class="bg-danger">
+          {{ task.deadline.strftime('%Y-%m-%d') }}
+      </td>
+      {% else %}
+      <td>
+        {{ task.deadline.strftime('%Y-%m-%d') }}
+      </td>
+      {% endif %}
+      
       <td>{% for l in task.labels %}
-        {{ l.name }}
+        {{ l.name }}{{ "," if not loop.last }}
         {% endfor %}
       </td>
       <td>
@@ -90,8 +99,8 @@
       <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
       <td>{{ task.date_modified.strftime('%Y-%m-%d') }}</td>
       <td>{% for l in task.labels %}
-        {{ l.name }}
-        {% endfor %}
+            {{ l.name }}{{ "," if not loop.last }}
+          {% endfor %}
       </td>
       <td>
         <form method="POST" action="{{ url_for('archive_task', task_id=task.id) }}">

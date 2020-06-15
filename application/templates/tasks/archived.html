@@ -19,7 +19,7 @@
       <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
       <td>{{ task.date_modified.strftime('%Y-%m-%d') }}</td>
       <td>{% for l in task.labels %}
-        {{ l.name }}
+        {{ l.name }}{{ "," if not loop.last }}
         {% endfor %}
       </td>
       <td>
