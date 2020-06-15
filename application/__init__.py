@@ -17,24 +17,10 @@ else:
 
 db = SQLAlchemy(app)
 
-from application import views
-
-from application.tasks import models
-from application.tasks import views
-
-from application.projects import models
-from application.projects import views
-
-from application.label import models
-
-from application.auth import models
-from application.auth import views
-
-from application.auth.models import User
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
 
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -58,6 +44,21 @@ def login_required(_func=None, *, role="ANY"):
             return func(*args, **kwargs)
         return decorated_view
     return wrapper if _func is None else wrapper(_func)
+
+from application import views
+
+from application.tasks import models
+from application.tasks import views
+
+from application.projects import models
+from application.projects import views
+
+from application.label import models
+
+from application.auth import models
+from application.auth import views
+
+from application.auth.models import User
 
 @login_manager.user_loader
 def load_user(user_id):
