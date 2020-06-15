@@ -40,7 +40,7 @@ def create_project():
 @login_required
 def open_project(project_id):
     return render_template("projects/project.html", project = Project.query.get(project_id),
-    tasks = Project.project_tasks(current_user.id, project_id))
+    tasks = Project.project_tasks(project_id))
 
 @app.route("/projects/tasks/<project_id>", methods=["POST"])
 @login_required
