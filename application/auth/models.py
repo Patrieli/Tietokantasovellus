@@ -37,8 +37,8 @@ class User(Base):
     @staticmethod
     def task_count(user_id):
 
-        stmt = text("SELECT user.id, COUNT(task.id) AS count FROM task"
-                    " LEFT JOIN user ON user.id = task.user_id"
+        stmt = text("SELECT user.id, COUNT(task.id) AS count"
+                    " FROM task LEFT JOIN user ON task.user_id = user.id"
                     " WHERE (task.user_id = :user_id)"
                     " GROUP BY user.id").params(user_id=user_id)
         
