@@ -1,19 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <table>
-        <tr>
-          <th>Projects</th>
-        </tr>
-        {% for project in projects %}
-        <tr>
-          <td>
-              <a href="{{ url_for('open_project', project_id=project.id) }}">
-                {{ project.name }}
-              </a>
-              
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
+  <h2>Projects</h2>
+  <div class="list-group">
+    {% for project in projects %}
+    <a href="{{ url_for('open_project', project_id=project.id) }}" class="list-group-item list-group-item-action">{{ project.name }}</a>
+    {% endfor %}
+  </div>
+  <br>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="button" class="btn btn-secondary" onclick=window.location.href="/";>Return</button>
+      <button type="submit" class="btn btn-primary" onclick=window.location.href="{{ url_for('projects_form') }}">New project</button>
+    </div>
+  </div>
 {% endblock %}

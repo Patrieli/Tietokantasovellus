@@ -20,7 +20,7 @@
   </div>
   <div>
     <button type="button" class="btn btn-secondary" onclick=window.location.href='{{ url_for('projects_index') }}';>Return</button>
-    <button type="button" class="btn btn-primary" onclick=window.location.href='{{ url_for('projects_index') }}';>Save</button>
+    <button type="button" class="btn btn-primary" onclick=window.location.href='{{ url_for('edit_project', project_id=project.id) }}';>Edit</button>
   </div>
 </form>
 
