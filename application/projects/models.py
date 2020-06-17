@@ -18,15 +18,15 @@ class Project(Base):
     @staticmethod
     def project_tasks(project_id):
 
-        stmt = text("SELECT task.name, task.deadline, task.state, COUNT(task.id) AS count FROM project"
+        stmt = text("SELECT task.id, task.name, task.deadline, task.state, COUNT(task.id) AS count FROM project"
                     " INNER JOIN task ON (task.project_id = project.id)"
                     " WHERE (task.project_id = :project_id) "
-                    " GROUP BY task.name, task.deadline, task.state" ).params(project_id=project_id)
+                    " GROUP BY task.id, task.name, task.deadline, task.state" ).params(project_id=project_id)
         
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"name":row[0], "deadline":row[1], "state":row[2], "count":row[3]})
+            response.append({"id":row[0], "name":row[1], "deadline":row[2], "state":row[3], "count":row[4]})
 
         return response
