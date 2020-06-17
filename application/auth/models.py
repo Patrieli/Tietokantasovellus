@@ -33,3 +33,19 @@ class User(Base):
 
     def roles(self):
         return [self.role]
+
+    @staticmethod
+    def task_count(user_id):
+
+        stmt = text("SELECT user.id, COUNT(task.id) AS count FROM task"
+                    " LEFT JOIN user ON user.id = task.user_id"
+                    " WHERE (user.id = :user_id)"
+                    " GROUP BY user.id").params(user_id=user_id)
+        
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "count":row[1]})
+
+        return response
