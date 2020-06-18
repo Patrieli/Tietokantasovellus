@@ -1,7 +1,7 @@
 # Käyttöohje
 
 Sovelluksen url:
-(Todoplanner)[https://todoplanneri.herokuapp.com/]  
+[Todoplanner](ttps://todoplanneri.herokuapp.com/)  
 Etusivulta löytyy kuvaus sovelluksesta.
 
 Kirjautuminen vaaditaan kaikkiin sovelluksen toiminnallisuuksiin.  
