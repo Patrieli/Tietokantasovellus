@@ -59,7 +59,8 @@ def signup_form():
 @app.route("/users", methods=["GET"])
 @login_required(role="ADMIN")
 def users_index():
-    return render_template("auth/list.html", users = User.query.all())
+    return render_template("auth/list.html", users = User.query.all(),
+    without_task = User.users_without_tasks())
 
 @app.route("/profile/", methods=["GET", "POST"])
 @login_required
