@@ -49,3 +49,19 @@ class Task(Base):
             response.append({"state":row[0], "count":row[1]})
 
         return response
+        
+    @staticmethod
+    def users_tasks(user_id):
+
+        stmt = text("SELECT task.id, task.name, task.deadline, task.state, COUNT(task.id) AS count FROM task"
+                    " INNER JOIN user ON (task.user_id = user.id)"
+                    " WHERE (task.user_id = :user_id) "
+                    " GROUP BY task.id, task.name, task.deadline, task.state" ).params(user_id=user_id)
+        
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1], "deadline":row[2], "state":row[3], "count":row[4]})
+
+        return response

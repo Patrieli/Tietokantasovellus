@@ -116,3 +116,10 @@ def edit_task(task_id):
     db.session().commit()
 
     return redirect(url_for("tasks_index"))
+
+@app.route("/tasks/list", methods=["GET"])
+@login_required
+def list_tasks():
+    return render_template("tasks/users_tasks.html",
+    current_date=datetime.now(),
+    users_tasks=Task.users_tasks(current_user.id))
