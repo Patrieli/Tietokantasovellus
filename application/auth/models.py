@@ -36,9 +36,21 @@ class User(Base):
 
     @staticmethod
     def task_count(user_id):
-        stmt = text("SELECT COUNT(Task.id) AS count FROM Task"
-                    " INNER JOIN User ON Task.user_id = User.id"
-                    " WHERE (user_id = :u_id) ").params(u_id = user_id)
+        stmt = text("SELECT COUNT(id) AS count FROM Task"
+                    " WHERE (user_id = :user_id) ").params(user_id = user_id)
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"count":row[0]})
+
+        return response
+
+    @staticmethod
+    def project_count(user_id):
+        stmt = text("SELECT COUNT(id) AS count FROM Project"
+                    " WHERE (user_id = :user_id) ").params(user_id = user_id)
 
         res = db.engine.execute(stmt)
 

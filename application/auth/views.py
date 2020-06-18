@@ -66,7 +66,8 @@ def users_index():
 def user_profile():
     if request.method == "GET":
         return render_template("auth/profile.html", user = User.query.get(current_user.id),
-        count = User.task_count(current_user.id))
+        count = User.task_count(current_user.id),
+        p_count = User.project_count(current_user.id))
 
 @app.route("/profile/edit/<user_id>", methods=["GET", "POST"])
 @login_required(role="ADMIN")
