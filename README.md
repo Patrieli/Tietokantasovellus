@@ -25,3 +25,11 @@ Sovellus toteutetaan osana Helsingin yliopiston tietojenkäsittelytieteen osasto
 	*Peruskäyttäjä:*  
   **Username**: testaaja  
   **Password**: salasana1  
+
+## Jatkokehitys ideat / puuttuvat toiminnallisuudet  
+Tasks:  
+- Taskin labeleiden avulla kategorisointi  
+- Taskien järjestäminen nimen, deadlinen tai projektin perusteella    
+Projects:  
+- Projektin etenemisen seuranta esimerkiksi proktilla olevien taskien statuksen perusteella  
+- Projektin aloitus / lopetuspäivämäärä
