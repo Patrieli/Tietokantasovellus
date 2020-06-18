@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="card-body">
+  <h2>Tasks</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Deadline</th>
+        <th scope="col">Labels</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in users_tasks %}
+      <tr>
+        <td>
+          <a href="{{ url_for('edit_task', task_id=task.id) }}">
+            <div>
+              {{ task.name }}
+            </div>
+          </a>
+        </td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.deadline }}</td>
+        <td>{% for l in task.labels %}
+            {{ l.name }}{{ "," if not loop.last }}
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
