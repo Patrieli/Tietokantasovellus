@@ -33,4 +33,7 @@ Tasks:
 
 Projects:  
 - Projektin etenemisen seuranta esimerkiksi proktilla olevien taskien statuksen perusteella  
-- Projektin aloitus / lopetuspäivämäärä
+- Projektin aloitus / lopetuspäivämäärä  
+
+Users:
+- Salasanan vaihto  
