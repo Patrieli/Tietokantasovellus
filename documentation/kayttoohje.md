@@ -9,7 +9,7 @@ Kirjautuminen vaaditaan kaikkiin sovelluksen toiminnallisuuksiin.
 Rekisteröinti tapahtuu sivulta:  
 `https://todoplanneri.herokuapp.com/auth/signup/`  
 
-Rekisteröinnissä tarkistetaan onko käyttäjä tunnus validi sekä täsmäävätkö salasanat.  
+Rekisteröinnissä tarkistetaan onko käyttäjätunnus validi sekä täsmäävätkö salasanat.  
 
 ![Sign Up](https://github.com/Patrieli/ToDoPlanner/blob/master/documentation/pictures/signup.png)  
 
