@@ -32,6 +32,7 @@ Sivulla eritellään käyttäjälle eri statuksella olevat taski:
 - Completed  
 
 Sivulla käyttäjä voi siirtää taskeja eri statukselle sekä poistaa taskeja.  
+Mikäli taskille asetettu deadline on mennyt, taskin deadline muuttuu punaseksi.  
 Käyttäjä pääsee muokkaamaan taskia klikkaamalla sen nimeä.  
 
 Taskin muokkaus tapahtuu sivulta:  
