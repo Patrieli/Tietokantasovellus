@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, current_user
 
 from application import app, db, bcrypt, login_required
 from application.auth.models import User
-from application.auth.forms import LoginForm, UserForm
+from application.auth.forms import LoginForm, UserForm, EditForm
 
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
@@ -17,6 +17,9 @@ def auth_login():
         validated = bcrypt.check_password_hash(user.password, form.password.data)
         if validated:
             login_user(user)
+        else:
+            return render_template("auth/loginform.html", form = form,
+                               error = "Invalid username or password")
     if not user:
         return render_template("auth/loginform.html", form = form,
                                error = "Invalid username or password")
@@ -64,3 +67,42 @@ def user_profile():
     if request.method == "GET":
         return render_template("auth/profile.html", user = User.query.get(current_user.id),
         count = User.task_count(current_user.id))
+
+@app.route("/profile/edit/<user_id>", methods=["GET", "POST"])
+@login_required(role="ADMIN")
+def edit_profile(user_id):
+    if request.method == "GET":
+        return render_template("auth/edit.html", form = EditForm(), 
+        user = User.query.get(user_id))
+
+    user = User.query.get(user_id)
+    form = EditForm(request.form)
+
+    if not form.validate():
+        return render_template("auth/edit.html", form = form,
+         user = User.query.get(user_id))
+
+    if user.username != form.username.data:
+        found_user = User.query.filter_by(username = form.username.data).first()
+        if found_user:
+            return render_template("auth/edit.html", form = form,
+                                user = User.query.get(user_id),
+                                error = "Username already exists")
+
+    user.username = form.username.data
+    user.role = form.role.data
+
+    db.session().commit()
+
+    return redirect(url_for("users_index"))
+
+@app.route("/profile/delete/<user_id>", methods=["GET", "POST"])
+@login_required(role="ADMIN")
+def delete_profile(user_id):
+
+    user = User.query.get(user_id)
+    
+    db.session().delete(user)
+    db.session().commit()
+
+    return redirect(url_for("users_index"))
