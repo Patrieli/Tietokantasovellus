@@ -1,6 +1,6 @@
 # Asennusohje  
 
-*Sovellus on toteutettu python versiolla 3.6.9.
+*Sovellus on toteutettu python versiolla 3.6.9.*
 
 Suorita vaiheet järjestyksessä ajamalla alla listatut komennot komentoriviltä.  
 
