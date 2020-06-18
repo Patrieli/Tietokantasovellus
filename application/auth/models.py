@@ -38,8 +38,7 @@ class User(Base):
     def task_count(user_id):
         stmt = text(" SELECT User.username, COUNT(DISTINCT Task.id) AS count, COUNT(DISTINCT Project.id) FROM User"
                     " LEFT JOIN Task ON Task.user_id = User.id"
-                    " LEFT JOIN Project On Project.user_id = User.id"
-                    " WHERE (Task.user_id = :user_id) AND (Project.user_id = :user_id) AND (User.id = :user_id)").params(user_id = user_id)
+                    " LEFT JOIN Project ON Project.user_id = User.id").params(user_id = user_id)
 
         res = db.engine.execute(stmt)
 
