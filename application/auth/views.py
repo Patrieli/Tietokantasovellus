@@ -58,9 +58,9 @@ def signup_form():
 def users_index():
     return render_template("auth/list.html", users = User.query.all())
 
-@app.route("/profile/<user_id>", methods=["GET", "POST"])
+@app.route("/profile/", methods=["GET", "POST"])
 @login_required
-def user_profile(user_id):
+def user_profile():
     if request.method == "GET":
         return render_template("auth/profile.html", user = User.query.get(current_user.id),
-        count = User.task_count(user_id))
+        count = User.task_count(current_user.id))

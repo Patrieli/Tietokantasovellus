@@ -37,15 +37,15 @@ class User(Base):
     @staticmethod
     def task_count(user_id):
 
-        stmt = text("SELECT user.id, COUNT(task.id) AS count"
+        stmt = text("SELECT COUNT(task.id) AS count"
                     " FROM task LEFT JOIN user ON task.user_id = user.id"
-                    " WHERE (task.user_id = :user_id)"
+                    " WHERE (user.id = :user_id)"
                     " GROUP BY user.id").params(user_id=user_id)
         
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"id":row[0], "count":row[1]})
+            response.append({"count":row[0]})
 
         return response

@@ -31,7 +31,7 @@
           </li>
           {% if current_user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('user_profile', user_id=current_user.id) }}">My profile</a>
+            <a class="nav-link" href="{{ url_for('user_profile') }}">My profile</a>
           </li>
           {% endif %}
           {% if current_user.role == "ADMIN" %}
