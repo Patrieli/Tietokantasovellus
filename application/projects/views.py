@@ -6,8 +6,6 @@ from application.projects.models import Project
 from application.projects.forms import ProjectForm
 from application.tasks.models import Task
 
-import sys
-
 @app.route("/projects", methods=["GET"])
 @login_required
 def projects_index():
