@@ -34,30 +34,30 @@ class User(Base):
     def roles(self):
         return [self.role]
 
-    @staticmethod
-    def users_without_tasks():
+    # @staticmethod
+    # def users_without_tasks():
 
-        stmt = text("SELECT User.id, User.username, User.role FROM User"
-                    " LEFT JOIN Task ON User.id = Task.user_id"
-                    " WHERE Task.user_id IS NULL")
+    #     stmt = text("SELECT User.id, User.username, User.role FROM User"
+    #                 " LEFT JOIN Task ON User.id = Task.user_id"
+    #                 " WHERE Task.user_id IS NULL")
         
-        res = db.engine.execute(stmt)
+    #     res = db.engine.execute(stmt)
 
-        response = []
-        for row in res:
-            response.append({"id":row[0], "username":row[1], "role":row[2]})
+    #     response = []
+    #     for row in res:
+    #         response.append({"id":row[0], "username":row[1], "role":row[2]})
 
-        return response
+    #     return response
 
     @staticmethod
     def task_count(user_id):
-        stmt = text("SELECT task.name,COUNT(id) AS count FROM Task "
-                    "WHERE (user_id = :user_id) "
-                    "GROUP BY id").params(user_id = user_id)
+        stmt = text("SELECT COUNT(id) AS count FROM Task "
+                    "WHERE (user_id = :user_id) ").params(user_id = user_id)
+
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"count":row[1]})
+            response.append({"count":row[0]})
 
         return response
