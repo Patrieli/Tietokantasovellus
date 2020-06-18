@@ -4,7 +4,7 @@ from datetime import datetime
 
 from application import app, db
 from application.tasks.models import Task
-from application.tasks.forms import TaskForm
+from application.tasks.forms import TaskForm, TaskEditForm
 from application.label.models import Label
 
 @app.route("/tasks", methods=["GET"])
@@ -61,7 +61,7 @@ def create_tasks():
 
     return redirect(url_for("tasks_index"))
 
-@app.route("/tasks/delete/<task_id>/", methods=["POST"])
+@app.route("/tasks/delete/<task_id>/", methods=["GET", "POST"])
 @login_required
 def delete_task(task_id):
 
@@ -87,3 +87,32 @@ def archive_task(task_id):
 def tasks_archived():
     return render_template("tasks/archived.html", tasks = Task.query.filter_by(user_id = current_user.id).filter(Task.archived == True),
     count=Task.count_all_tasks(current_user.id))
+
+@app.route("/tasks/edit/<task_id>", methods=["GET", "POST"])
+@login_required
+def edit_task(task_id):
+    if request.method == "GET":
+        return render_template("tasks/edit.html", form = TaskEditForm(),
+        task = Task.query.get(task_id))
+
+    form = TaskEditForm(request.form)
+
+    if not form.validate():
+        return render_template("tasks/edit.html", form = form,
+        task = Task.query.get(task_id))
+
+    task = Task.query.get(task_id)
+
+    task.name = form.name.data
+    task.description = form.description.data
+    task.deadline = form.deadline.data
+    task.status = form.status.data
+
+    labels = form.labels.data.split(",")
+    task.labels = []
+    for l in labels:
+        task.labels.append(Label(l.strip()))
+
+    db.session().commit()
+
+    return redirect(url_for("tasks_index"))
