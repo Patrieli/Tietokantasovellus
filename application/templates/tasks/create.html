@@ -2,65 +2,52 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('create_tasks') }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.name.label }}
-      </td>
-      <td>
-        {{ form.name }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.name.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.description.label }}
-      </td>
-      <td colspan="2">
-        {{ form.description }}
-      </td> 
-      <td>
-        <ul>
-          {% for error in form.description.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>     
-    </tr>
-    <tr>
-      <td>
-        {{ form.deadline.label }}
-      </td>
-      <td colspan="2">
-        {{ form.deadline(placeholder="dd/mm/yyyy") }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.deadline.errors %}
-          <li>{{ error + " (dd/mm/yyyy)"}}</li>
-          {% endfor %}
-        </ul>
-      </td>       
-    </tr>
-    <tr>
-      <td>
-        {{ form.labels.label }}
-      </td>
-      <td colspan="2">
-        {{ form.labels(placeholder="Separate labels with commas") }}
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input type="submit" value="Create new task" />
-      </td>
-    </tr>
-  </table>
+  <div class="form-group">
+    {{ form.name.label }}
+    {% if form.name.errors %}
+    {{ form.name(class_='form-control is-invalid') }}
+    <div>
+    {% for error in form.name.errors %}
+    {{ error }}
+    {% endfor %}
+    </div>
+    {% else %}
+    {{ form.name( class_='form-control') }}
+    {% endif %}
+</div>
+<div class="form-group">
+    {{ form.description.label }}
+    {% if form.description.errors %}
+    {{ form.description(class_='form-control is-invalid') }}
+    <div>
+    {% for error in form.description.errors %}
+    {{ error }}
+    {% endfor %}
+    </div>
+    {% else %}
+    {{ form.description( class_='form-control') }}
+    {% endif %}
+</div>
+<div class="form-group">
+    {{ form.deadline.label }}
+    {% if form.deadline.errors %}
+    {{ form.deadline(class_='form-control is-invalid') }}
+    <div>
+    {% for error in form.deadline.errors %}
+    {{ error + " (dd/mm/yyyy)" }}
+    {% endfor %}
+    </div>
+    {% else %}
+    {{ form.deadline(placeholder="dd/mm/yyyy", class_='form-control') }}
+    {% endif %}
+</div>
+<div class="form-group">
+    {{ form.labels.label }}
+    {{ form.labels(placeholder="Separate labels with commas", class_='form-control') }}
+</div>
+<div class="form-group">
+    <button type="button" class="btn btn-secondary" onclick=window.location.href='{{ url_for('tasks_index') }}';>Return</button>
+    <button type="submit" class="btn btn-primary">Create</button>
+</div>
 </form>
 {% endblock %}

@@ -14,7 +14,13 @@
     </tr>
     {% for task in tasks %}
     <tr>
-      <td>{{ task.name }}</td>
+      <td>          
+        <a href="{{ url_for('edit_task', task_id=task.id) }}">
+        <div>
+          {{ task.name }}
+        </div>
+        </a>
+      </td>
       <td>{{ task.description }}</td>
       <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
       <td>{{ task.date_modified.strftime('%Y-%m-%d') }}</td>

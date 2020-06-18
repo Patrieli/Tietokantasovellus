@@ -14,7 +14,13 @@
     {% for task in tasks %}
     {% if task.state == "To-do" %}
     <tr>
-      <td>{{ task.name }}</td>
+      <td>          
+        <a href="{{ url_for('edit_task', task_id=task.id) }}">
+        <div>
+          {{ task.name }}
+        </div>
+        </a>
+      </td>
       <td>{{ task.description }}</td>
       {% if task.deadline < current_date %}
       <td class="bg-danger">
@@ -57,7 +63,13 @@
     {% for task in tasks %}
     {% if task.state == "In progress" %}
     <tr>
-      <td>{{ task.name }}</td>
+      <td>          
+        <a href="{{ url_for('edit_task', task_id=task.id) }}">
+        <div>
+          {{ task.name }}
+        </div>
+        </a>
+      </td>
       <td>{{ task.description }}</td>
       {% if task.deadline < current_date %}
       <td class="bg-danger">
@@ -101,7 +113,13 @@
     {% for task in tasks %}
     {% if task.state == "Completed" and task.archived == False %}
     <tr>
-      <td>{{ task.name }}</td>
+      <td>          
+        <a href="{{ url_for('edit_task', task_id=task.id) }}">
+        <div>
+          {{ task.name }}
+        </div>
+        </a>
+      </td>
       <td>{{ task.description }}</td>
       <td>{{ task.deadline.strftime('%Y-%m-%d') }}</td>
       <td>{{ task.date_modified.strftime('%Y-%m-%d') }}</td>

@@ -3,62 +3,48 @@
 {% block body %}
 {{ error }}
 <form method="POST" action="{{ url_for('signup_form') }}">
-  <table>
-    <tr>
-      <td>
-	{{ form.username.label }}
-      </td>
-      <td>
-	{{ form.username }}
-      </td>
-      <td>
-       <ul>
-       {% if form.username.errors %}
-       {% for error in form.username.errors %}
-        <li>{{ error }}</li>
-       {% endfor %}
-       {% endif %}
-       </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	{{ form.password.label }}
-      </td>
-      <td>
-	{{ form.password }}
-      </td>
-      <td>
-       <ul>
-       {% if form.password.errors %}
-       {% for error in form.password.errors %}
-        <li>{{ error }}</li>
-       {% endfor %}
-       {% endif %}
-      </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-	{{ form.repassword.label }}
-      </td>
-      <td>
-	{{ form.repassword }}
-      </td>
-      <td>
-       <ul>
-       {% if form.repassword.errors %}
-       {% for error in form.repassword.errors %}
-        <li>{{ error }}</li>
-       {% endfor %}
-       {% endif %}
-      </ul>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-	<input type="submit" value="Sign up"/>
-      </td>
-    </tr>
+      <div class="form-group">
+            {{ form.username.label }}
+            {% if form.username.errors %}
+            {{ form.username(class_='form-control is-invalid') }}
+            <div>
+            {% for error in form.username.errors %}
+            {{ error }}
+            {% endfor %}
+            </div>
+            {% else %}
+            {{ form.username( class_='form-control') }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.password.label }}
+            {% if form.password.errors %}
+            {{ form.password(class_='form-control is-invalid') }}
+            <div>
+            {% for error in form.password.errors %}
+            {{ error }}
+            {% endfor %}
+            </div>
+            {% else %}
+            {{ form.password( class_='form-control') }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.repassword.label }}
+            {% if form.repassword.errors %}
+            {{ form.repassword(class_='form-control is-invalid') }}
+            <div>
+            {% for error in form.repassword.errors %}
+            {{ error }}
+            {% endfor %}
+            </div>
+            {% else %}
+            {{ form.repassword( class_='form-control') }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-secondary" onclick=window.location.href='/';>Return</button>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
 </form>
 {% endblock %}
