@@ -1,6 +1,8 @@
-# Asennusohje
+# Asennusohje  
 
-Suorita vaiheet järjestyksessä ajamalla alla listatut komennot komentoriviltä.
+*Sovellus on toteutettu python versiolla 3.6.9.
+
+Suorita vaiheet järjestyksessä ajamalla alla listatut komennot komentoriviltä.  
 
 ### Sovelluksen kloonaus Githubista   
 ``
@@ -24,4 +26,4 @@ python run.py
 ``  
 
 Ensimmäisen käynnistyksen aikana tapahtuu tietokannan luonti.  
-Sovellus on nyt toiminassa sivulla [http://localhost:5000/](http://localhost:5000/).
+Sovellus on nyt toiminassa lokaalisti sivulla [http://localhost:5000/](http://localhost:5000/).
