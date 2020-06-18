@@ -2,6 +2,7 @@
 
 {% block body %}
 <div class="card-body">
+  <h2>Users</h2>
   <table class="table">
     <thead>
       <tr>
@@ -11,6 +12,31 @@
     </thead>
     <tbody>
       {% for user in users %}
+      <tr>
+        <td>
+          <a href="{{ url_for('edit_profile', user_id=user.id) }}">
+            <div>
+              {{ user.username }}
+            </div>
+          </a>
+        </td>
+        <td>{{ user.role }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="card-body">
+  <h2>Users without tasks</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in without_task %}
       <tr>
         <td>
           <a href="{{ url_for('edit_profile', user_id=user.id) }}">
