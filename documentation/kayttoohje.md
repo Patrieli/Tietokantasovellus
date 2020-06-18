@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Sovelluksen url:
+Sovelluksen url:  
 ![Todoplanner](ttps://todoplanneri.herokuapp.com/)  
 Etusivulta löytyy kuvaus sovelluksesta.
 
