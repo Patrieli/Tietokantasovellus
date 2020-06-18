@@ -18,7 +18,8 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tasks</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="{{ url_for('tasks_form') }}">New Task</a>
-              <a class="dropdown-item" href="{{ url_for('tasks_index') }}">List all Tasks</a>
+              <a class="dropdown-item" href="{{ url_for('tasks_index') }}">Overview</a>
+              <a class="dropdown-item" href="{{ url_for('list_tasks') }}">List all Tasks</a>
               <a class="dropdown-item" href="{{ url_for('tasks_archived') }}">Archived Tasks</a>
             </div>
           </li>

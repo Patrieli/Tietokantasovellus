@@ -21,4 +21,12 @@
       {% endfor %}
     </div>
 </div>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Project count</label>
+  <div class="col-sm-10">
+    {% for p in p_count %}
+    <input type="text" readonly class="form-control-plaintext" value={{ p.count }}>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
