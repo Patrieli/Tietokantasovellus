@@ -50,6 +50,15 @@ Kun projekti on luotu käyttäjä ohjataan seuraavalle sivulle, josta voidaan li
 Omat projektit ovat listattuna sivulla:  
 `https://todoplanneri.herokuapp.com/projects`  
 
+Projektin nimeä klikkaamalla saa projektin tiedot auki sekä sivulta löytyvän edit näppäimellä käyttäjä pääsee muokkaamaan projektia  
+
+Projektin muokkaus tapahtuu sivulta:  
+`https://todoplanneri.herokuapp.com/projects/edit/<project_id>`  
+
+Käyttäjä voi vaihtaa projektin nimeä, poistaa sekä lisätä taskeja projektille.  
+
+![Edit Project](https://github.com/Patrieli/ToDoPlanner/blob/master/documentation/pictures/edit_project.png)  
+
 Arkistoidut taskit ovat listattavissa sivulla:  
 `https://todoplanneri.herokuapp.com/tasks/archived`  
 
