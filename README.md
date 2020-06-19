@@ -51,4 +51,6 @@ Projects:
 Users:  
 - Kuukausitason raportti mistä näkyy suoritettujen taskien määrä, avoimet taskit, avoimet projektit sekä projektien suoritus prosentti  
 
+Kaverien lisäys:  
+- Käyttäjät voivat lisätä toisia kavereiksi ja jakaa projektit ja projektin taskit keskenään
 
