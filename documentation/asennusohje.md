@@ -57,8 +57,8 @@ git remote add heroku https://git.heroku.com/"sovelluksen nimi"
 Projektin lähetys Herokuun  
 
 ``
-git add .
-git commit -m "Initial commit"
-git push heroku master
+git add .  
+git commit -m "Initial commit"  
+git push heroku master  
 ``  
 
