@@ -74,7 +74,8 @@ def user_profile():
 def edit_profile(user_id):
     if request.method == "GET":
         return render_template("auth/edit.html", form = EditForm(), 
-        user = User.query.get(user_id))
+        user = User.query.get(user_id),
+        tasks = User.users_tasks(user_id))
 
     user = User.query.get(user_id)
     form = EditForm(request.form)

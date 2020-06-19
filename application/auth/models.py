@@ -59,3 +59,19 @@ class User(Base):
             response.append({"count":row[0]})
 
         return response
+
+    @staticmethod
+    def users_tasks(user_id):
+        stmt = text("SELECT COUNT(project.id), project.name, COUNT(task.id) FROM project"
+                    " LEFT JOIN task ON (task.project_id = project.id)"
+                    " WHERE (project.user_id = :user_id) "
+                    " GROUP BY project.id, project.name, task.id, task.name").params(user_id = user_id)
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"project_id":row[0], "project_name":row[1], "count":row[2]})
+
+        return response
+    
