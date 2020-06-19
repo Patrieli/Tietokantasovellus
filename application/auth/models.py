@@ -65,7 +65,7 @@ class User(Base):
         stmt = text("SELECT COUNT(project.id), project.name, COUNT(task.id) FROM project"
                     " LEFT JOIN task ON (task.project_id = project.id)"
                     " WHERE (project.user_id = :user_id) "
-                    " GROUP BY project.id, project.name, task.id, task.name").params(user_id = user_id)
+                    " GROUP BY project.id, project.name").params(user_id = user_id)
 
         res = db.engine.execute(stmt)
 
