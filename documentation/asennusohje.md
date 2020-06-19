@@ -35,6 +35,8 @@ Siirry komentorivillä sovelluksen hakemistoon ja käynnistä virtualenv
 
 ``
 cd ToDoPlanner  
+``  
+``  
 source venv/bin/activate 
 ``
 
@@ -58,7 +60,11 @@ Projektin lähetys Herokuun
 
 ``
 git add .  
+``  
+``  
 git commit -m "Initial commit"  
+``  
+``  
 git push heroku master  
 ``  
 
