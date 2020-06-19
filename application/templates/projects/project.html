@@ -11,11 +11,30 @@
   <div class="form-group row">
     <label for="addTasks" class="col-sm-2 col-form-label">Tasks</label>
     <div class="col-sm-10">
-      <ul class="list-group list-group-flush">
-        {% for task in tasks %}
-        <li class="list-group-item">{{ task.name }} {{ task.state }}</li>
+    <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">State</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for t in tasks %}
+          <tr>
+            <td>          
+              <a href="{{ url_for('edit_task', task_id=t.id) }}">
+              <div>
+                {{ t.name }}
+              </div>
+              </a>
+            </td>
+            <td>{{ t.description }}</td>
+            <td>{{ t.state }}</td>
+          </tr>
         {% endfor %}
-      </ul>
+        </tbody>
+    </table>
     </div>
   </div>
   <div>

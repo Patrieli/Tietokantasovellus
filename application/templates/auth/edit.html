@@ -26,10 +26,28 @@
     </div>
 </form>
 <div class="form-group">
-    <h2>Users projects</h2>
-    {% for t in tasks %}
-    {{ t.project_name }}
-    {{ t.count }}
-    {% endfor %}
+    <h3>Users projects</h3>
+    {% if count < 1 %}
+    <div>
+        <small>This user doesn't have projects</small>
+    </div>
+    {% else %}
+    <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Project name</th>
+            <th scope="col">Task count</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for t in tasks %}
+          <tr>
+            <td>{{ t.project_name }}</td>
+            <td>{{ t.count }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 </div>
 {% endblock %}

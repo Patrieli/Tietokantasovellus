@@ -2,18 +2,24 @@
 
 {% block body %}
   <h2>To-Dos</h2>
-  <table class="table">
+  <table class="table table-striped">
     <tr>
       <th scope="col">Task</th>
       <th scope="col">Description</th>
       <th scope="col">Deadline</th>
       <th scope="col">Labels</th>
+      <th scope="col">Created</th>
       <th scope="col"> </th>
       <th scope="col"> </th>
     </tr>
     {% for task in tasks %}
     {% if task.state == "To-do" %}
-    <tr>
+    {% if task.deadline < current_date %}
+    {% set row = 'table-danger' %}
+    {% else %}
+    {% set row = 'table-default' %}
+    {% endif %}
+    <tr class={{ row }}>
       <td>          
         <a href="{{ url_for('edit_task', task_id=task.id) }}">
         <div>
@@ -22,18 +28,15 @@
         </a>
       </td>
       <td>{{ task.description }}</td>
-      {% if task.deadline < current_date %}
-      <td class="bg-danger">
-          {{ task.deadline.strftime('%Y-%m-%d') }}
-      </td>
-      {% else %}
       <td>
         {{ task.deadline.strftime('%Y-%m-%d') }}
       </td>
-      {% endif %}
       <td>{% for l in task.labels %}
         {{ l.name }}{{ "," if not loop.last }}
         {% endfor %}
+      </td>
+      <td>
+        {{ task.date_created.strftime('%Y-%m-%d') }}
       </td>
       <td>
         <form method="POST" action="{{ url_for('activate_task', task_id=task.id) }}">
@@ -51,18 +54,24 @@
   </table>
   <br>
   <h2>In Progress</h2>
-  <table class="table">
+  <table class="table table-striped">
     <tr>
       <th scope="col">Task</th>
       <th scope="col">Description</th>
       <th scope="col">Deadline</th>
       <th scope="col">Labels</th>
+      <th scope="col">Created</th>
       <th scope="col"> </th>
       <th scope="col"> </th>
     </tr>
     {% for task in tasks %}
     {% if task.state == "In progress" %}
-    <tr>
+    {% if task.deadline < current_date %}
+    {% set row = 'table-danger' %}
+    {% else %}
+    {% set row = 'table-default' %}
+    {% endif %}
+    <tr class={{ row }}>
       <td>          
         <a href="{{ url_for('edit_task', task_id=task.id) }}">
         <div>
@@ -71,18 +80,15 @@
         </a>
       </td>
       <td>{{ task.description }}</td>
-      {% if task.deadline < current_date %}
-      <td class="bg-danger">
-          {{ task.deadline.strftime('%Y-%m-%d') }}
-      </td>
-      {% else %}
       <td>
         {{ task.deadline.strftime('%Y-%m-%d') }}
       </td>
-      {% endif %}
       <td>{% for l in task.labels %}
         {{ l.name }}{{ "," if not loop.last }}
         {% endfor %}
+      </td>
+      <td>
+        {{ task.date_created.strftime('%Y-%m-%d') }}
       </td>
       <td>
         <form method="POST" action="{{ url_for('complete_task', task_id=task.id) }}">
@@ -100,7 +106,7 @@
   </table>
   <br>
   <h2>Completed </h2>
-  <table class="table">
+  <table class="table table-striped">
     <tr>
       <th scope="col">Task</th>
       <th scope="col">Description</th>
