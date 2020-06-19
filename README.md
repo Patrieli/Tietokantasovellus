@@ -26,14 +26,29 @@ Sovellus toteutetaan osana Helsingin yliopiston tietojenkäsittelytieteen osasto
   **Username**: testaaja  
   **Password**: salasana1  
 
-## Jatkokehitys ideat / puuttuvat toiminnallisuudet  
+## Puuttuvat toiminnallisuudet  
 Tasks:  
 - Taskin labeleiden avulla kategorisointi  
 - Taskien järjestäminen nimen, deadlinen tai projektin perusteella  
+- Taskien aloitus / lopetuspäivämäärän hyödyntäminen
 
 Projects:  
-- Projektin etenemisen seuranta esimerkiksi proktilla olevien taskien statuksen perusteella  
 - Projektin aloitus / lopetuspäivämäärä  
 
 Users:
 - Salasanan vaihto  
+
+## Jatkokehytys ideat  
+Tasks:  
+- Taskien listaus sivuta enemmän kanban tyylinen, taulukko missä taskit näytetään kortteina ja niitä voidaan vedellä taulussa tilasta toiseen.  
+- Muistutus jos taskin deadline lähenee  
+- Daily tasks sivu, käyttäjä voi listata sivulla päivittäisi taskeja / muistutuksia  
+
+Projects:  
+- Rarpotti projektin etenemisestä, esimerkiksi taskien tilojen mukaan  
+- Projektin ja taskien tilojen yhdistäminen, mikäli projekti olisi valmis kaikki taskit siirretään valmiiksi  
+
+Users:  
+- Kuukausitason raportti mistä näkyy suoritettujen taskien määrä, avoimet taskit, avoimet projektit sekä projektien suoritus prosentti  
+
+
