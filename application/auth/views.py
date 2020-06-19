@@ -75,20 +75,25 @@ def edit_profile(user_id):
     if request.method == "GET":
         return render_template("auth/edit.html", form = EditForm(), 
         user = User.query.get(user_id),
-        tasks = User.users_tasks(user_id))
+        tasks = User.users_tasks(user_id),
+        count = len(User.users_tasks(user_id)))
 
     user = User.query.get(user_id)
     form = EditForm(request.form)
 
     if not form.validate():
         return render_template("auth/edit.html", form = form,
-         user = User.query.get(user_id))
+         user = User.query.get(user_id),
+         tasks = User.users_tasks(user_id),
+         count = len(User.users_tasks(user_id)))
 
     if user.username != form.username.data:
         found_user = User.query.filter_by(username = form.username.data).first()
         if found_user:
             return render_template("auth/edit.html", form = form,
                                 user = User.query.get(user_id),
+                                tasks = User.users_tasks(user_id),
+                                count = len(User.users_tasks(user_id)),
                                 error = "Username already exists")
 
     user.username = form.username.data
