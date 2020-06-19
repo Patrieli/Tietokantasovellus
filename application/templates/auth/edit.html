@@ -25,4 +25,11 @@
         <button type="button" class="btn btn-danger" onclick=window.location.href='{{ url_for('delete_profile', user_id=user.id) }}';>Delete user</button>
     </div>
 </form>
+<div class="form-group">
+    <h2>Users projects</h2>
+    {% for t in tasks %}
+    {{ t.project_name }}
+    {{ t.count }}
+    {% endfor %}
+</div>
 {% endblock %}
