@@ -70,6 +70,6 @@ git commit -m "Initial commit"
 git push heroku master  
 ``  
 
-Projekti löytyy nyt herokusta
+Projekti löytyy nyt herokusta  
 https://"sovelluksen nimi".herokuapp.com/
 
