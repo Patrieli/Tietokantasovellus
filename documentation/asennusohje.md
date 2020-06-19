@@ -12,6 +12,8 @@ git clone https://github.com/Patrieli/ToDoPlanner.git
 ### Sovellus hakemistoon ja virtuaaliympäristö käyttöön    
 ``
 cd ToDoPlanner  
+``  
+``  
 source venv/bin/activate 
 ``
 
